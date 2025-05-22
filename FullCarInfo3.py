@@ -16,6 +16,8 @@ import csv
 import os
 import requests
 from dotenv import load_dotenv
+import http.client
+import json
 
 file_path = "CopartCars.csv"
 data = pd.read_csv(file_path, encoding="utf-8-sig")
@@ -28,6 +30,7 @@ ADMIN_FIELDS = [
 # Load API key from .env
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 def render_header():
     with ui.header().classes('bg-blue-900 text-white p-4'):
@@ -36,6 +39,8 @@ def render_header():
             ui.button("Home", on_click=lambda: ui.navigate.to('/')).props('flat color=white')
             ui.button("Admin", on_click=lambda: ui.navigate.to('/admin')).props('flat color=white')
             ui.button("VIN Lookup", on_click=lambda: ui.navigate.to('/vin-lookup')).props('flat color=white')
+            ui.button("Car API Search", on_click=lambda: ui.navigate.to('/car-api-search')).props('flat color=white')
+            ui.button("VIN Lookup 2", on_click=lambda: ui.navigate.to('/vin-lookup-rapidapi')).props('flat color=white')
 
 @ui.page('/')
 def main_page():
@@ -52,6 +57,19 @@ def main_page():
 @ui.page('/admin')
 def admin_page():
     render_header()
+    # Check if user is authenticated
+    if not app.storage.user.get('is_admin'):
+        password_input = ui.input('Admin Password', password=True)
+        def try_login():
+            if password_input.value == ADMIN_PASSWORD:
+                app.storage.user['is_admin'] = True
+                ui.notify('Access granted!')
+                ui.navigate.to('/admin')
+            else:
+                ui.notify('Incorrect password', color='negative')
+        ui.button('Login', on_click=try_login)
+        return
+
     ui.label('Admin: Add New Vehicle').classes('text-2xl font-bold mb-4')
     inputs = {field: ui.input(label=field).classes('mb-2') for field in ADMIN_FIELDS}
 
@@ -73,8 +91,8 @@ def vin_lookup_page():
 
     def lookup():
         vin = vin_input.value.strip()
-        if not vin:
-            result_label.text = "Please enter a VIN."
+        if not vin or len(vin) != 17 or not vin.isalnum():
+            result_label.text = "Please enter a valid 17-character VIN."
             return
         try:
             response = requests.get(
@@ -91,6 +109,75 @@ def vin_lookup_page():
                     result_label.text = "No details found for this VIN."
             else:
                 result_label.text = f"API error: {response.status_code}"
+        except Exception as e:
+            result_label.text = f"Error: {e}"
+
+    ui.button("Lookup", on_click=lookup).classes("mt-2")
+
+@ui.page('/car-api-search')
+def car_api_search_page():
+    render_header()
+    ui.label("Search Cars").classes("text-2xl font-bold mt-4")  # Changed label here
+    make_input = ui.input("Make (e.g. Toyota)").classes("mb-2")
+    model_input = ui.input("Model (optional)").classes("mb-2")
+    year_input = ui.input("Year (optional)").classes("mb-2")
+    result_label = ui.label("").classes("mt-4")
+
+    def search():
+        params = {"make": make_input.value.strip()}
+        if model_input.value.strip():
+            params["model"] = model_input.value.strip()
+        if year_input.value.strip():
+            params["year"] = year_input.value.strip()
+        try:
+            response = requests.get(
+                "https://api.api-ninjas.com/v1/cars",
+                params=params,
+                headers={"X-Api-Key": API_KEY}
+            )
+            if response.status_code == 200:
+                data = response.json()
+                if data:
+                    car = data[0]
+                    details = "\n".join(f"{k}: {v}" for k, v in car.items())
+                    result_label.text = details
+                else:
+                    result_label.text = "No cars found for this search."
+            else:
+                result_label.text = f"API error: {response.status_code}"
+        except Exception as e:
+            result_label.text = f"Error: {e}"
+
+    ui.button("Search", on_click=search).classes("mt-2")
+
+@ui.page('/vin-lookup-rapidapi')
+def vin_lookup_rapidapi_page():
+    render_header()
+    ui.label("VIN Lookup (RapidAPI)").classes("text-2xl font-bold mt-4")
+    vin_input = ui.input("Enter VIN").classes("mb-4")
+    result_label = ui.label("").classes("mt-2")
+
+    def lookup():
+        vin = vin_input.value.strip()
+        if not vin or len(vin) != 17 or not vin.isalnum():
+            result_label.text = "Please enter a valid 17-character VIN."
+            return
+        try:
+            conn = http.client.HTTPSConnection("vin-decoder-usa.p.rapidapi.com")
+            headers = {
+                'x-rapidapi-key': "7c4bb7d03bmsh1cf6c21ca90a446p18851bjsn4cef8a63bac3",
+                'x-rapidapi-host': "vin-decoder-usa.p.rapidapi.com"
+            }
+            conn.request("GET", f"/{vin}", headers=headers)
+            res = conn.getresponse()
+            data = res.read()
+            decoded = json.loads(data.decode("utf-8"))
+            # Format the output for display
+            if isinstance(decoded, dict):
+                details = "\n".join(f"{k}: {v}" for k, v in decoded.items())
+                result_label.text = details
+            else:
+                result_label.text = str(decoded)
         except Exception as e:
             result_label.text = f"Error: {e}"
 
