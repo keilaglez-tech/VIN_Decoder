@@ -13,40 +13,41 @@
 from nicegui import ui, app
 import pandas as pd
 import csv
+import os
+import requests
+from dotenv import load_dotenv
 
 file_path = "CopartCars.csv"
 data = pd.read_csv(file_path, encoding="utf-8-sig")
 data.columns = data.columns.str.strip()
 
-makes = {
-    "Hyundai": data[data['Make'] == 'Hyundai'],
-    "Nissan": data[data['Make'] == 'Nissan'],
-    "Chevrolet": data[data['Make'] == 'Chevrolet'],
-    "Mercedes": data[data['Make'] == 'Mercedes'],
-    "Toyota": data[data['Make'] == 'Toyota'],
-}
-
 ADMIN_FIELDS = [
     'Make', 'Model', 'Year', 'Trim', 'Miles', 'Color', 'Engine', 'Transmission', 'Title', 'Gas', 'Doors', 'Price'
 ]
 
-# --- Header without Tabs ---
+# Load API key from .env
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
+
 def render_header():
     with ui.header().classes('bg-blue-900 text-white p-4'):
         ui.label("VehicleMax").classes("text-3xl font-bold")
         with ui.row().classes('ml-8'):
             ui.button("Home", on_click=lambda: ui.navigate.to('/')).props('flat color=white')
             ui.button("Admin", on_click=lambda: ui.navigate.to('/admin')).props('flat color=white')
+            ui.button("VIN Lookup", on_click=lambda: ui.navigate.to('/vin-lookup')).props('flat color=white')
 
 @ui.page('/')
 def main_page():
     render_header()
     ui.label("Car Information Viewer").classes("text-2xl font-bold mt-4")
-    for make_name in makes.keys():
-        ui.button(
-            f"{make_name} Vehicles",
-            on_click=lambda make=make_name: ui.navigate.to(f"/vehicles/{make}")
-        ).classes("text-xl mt-4")
+    with ui.row().classes("flex-wrap"):
+        for _, row in data.iterrows():
+            with ui.card().classes("w-80 m-4 shadow-lg"):
+                ui.label(f"{row['Year']} {row['Make']} {row['Model']} {row['Trim']}").classes("text-lg font-bold mb-2")
+                for col, value in row.items():
+                    if col not in ['Year', 'Make', 'Model', 'Trim']:
+                        ui.label(f"{col}: {value}").classes("text-sm")
 
 @ui.page('/admin')
 def admin_page():
@@ -63,38 +64,37 @@ def admin_page():
 
     ui.button('Add Vehicle', on_click=add_vehicle).classes('mt-4')
 
-# --- Vehicles list page for each make ---
-def create_vehicles_page(make_name, make_data):
-    @ui.page(f"/vehicles/{make_name}")
-    def vehicles_page():
-        render_header()
-        ui.label(f"{make_name} Vehicles").classes("text-xl font-bold")
-        vehicles = list(make_data.iterrows())
-        for i in range(0, len(vehicles), 5):
-            with ui.row().classes('items-center'):
-                for _, row in vehicles[i:i+5]:
-                    vehicle_label = f"{row['Year']} {row['Make']} {row['Model']} {row['Trim']}"
-                    with ui.column().classes('items-center flex-1 min-w-0'):
-                        ui.button(
-                            vehicle_label,
-                            on_click=lambda r=row: ui.navigate.to(f"/vehicle/{r['Make']}/{r['Model']}/{r['Trim']}")
-                        )
-                    create_vehicle_details_page(row)
-        ui.button("Back to Main Menu", on_click=lambda: ui.navigate.to("/"))
+@ui.page('/vin-lookup')
+def vin_lookup_page():
+    render_header()
+    ui.label("VIN Lookup").classes("text-2xl font-bold mt-4")
+    vin_input = ui.input("Enter VIN").classes("mb-4")
+    result_label = ui.label("").classes("mt-2")
 
-# --- Vehicle details page ---
-def create_vehicle_details_page(vehicle_row):
-    @ui.page(f"/vehicle/{vehicle_row['Make']}/{vehicle_row['Model']}/{vehicle_row['Trim']}")
-    def vehicle_details():
-        render_header()
-        ui.label("Vehicle Details").classes("text-xl font-bold")
-        for col, value in vehicle_row.items():
-            ui.label(f"{col}: {value}")
-        ui.button("Back to Vehicles", on_click=lambda: ui.navigate.to(f"/vehicles/{vehicle_row['Make']}"))
+    def lookup():
+        vin = vin_input.value.strip()
+        if not vin:
+            result_label.text = "Please enter a VIN."
+            return
+        try:
+            response = requests.get(
+                "https://api.api-ninjas.com/v1/vinlookup",
+                params={"vin": vin},
+                headers={"X-Api-Key": API_KEY}
+            )
+            if response.status_code == 200:
+                data = response.json()
+                if data:
+                    details = "\n".join(f"{k}: {v}" for k, v in data.items())
+                    result_label.text = details
+                else:
+                    result_label.text = "No details found for this VIN."
+            else:
+                result_label.text = f"API error: {response.status_code}"
+        except Exception as e:
+            result_label.text = f"Error: {e}"
 
-# Register all pages
-for make_name, make_data in makes.items():
-    create_vehicles_page(make_name, make_data)
+    ui.button("Lookup", on_click=lookup).classes("mt-2")
 
 ui.run(title="Car Information Viewer", storage_secret="P4ssword!")
 
