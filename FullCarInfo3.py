@@ -23,14 +23,9 @@ file_path = "CopartCars.csv"
 data = pd.read_csv(file_path, encoding="utf-8-sig")
 data.columns = data.columns.str.strip()
 
-ADMIN_FIELDS = [
-    'Make', 'Model', 'Year', 'Trim', 'Miles', 'Color', 'Engine', 'Transmission', 'Title', 'Gas', 'Doors', 'Price'
-]
-
 # Load API key from .env
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")
 
 def render_header():
     with ui.header().classes('bg-blue-900 text-white p-4'):
@@ -53,34 +48,6 @@ def main_page():
                 for col, value in row.items():
                     if col not in ['Year', 'Make', 'Model', 'Trim']:
                         ui.label(f"{col}: {value}").classes("text-sm")
-
-@ui.page('/admin')
-def admin_page():
-    render_header()
-    # Check if user is authenticated
-    if not app.storage.user.get('is_admin'):
-        password_input = ui.input('Admin Password', password=True)
-        def try_login():
-            if password_input.value == ADMIN_PASSWORD:
-                app.storage.user['is_admin'] = True
-                ui.notify('Access granted!')
-                ui.navigate.to('/admin')
-            else:
-                ui.notify('Incorrect password', color='negative')
-        ui.button('Login', on_click=try_login)
-        return
-
-    ui.label('Admin: Add New Vehicle').classes('text-2xl font-bold mb-4')
-    inputs = {field: ui.input(label=field).classes('mb-2') for field in ADMIN_FIELDS}
-
-    def add_vehicle():
-        new_row = [inputs[field].value for field in ADMIN_FIELDS]
-        with open(file_path, 'a', newline='', encoding='latin1') as f:
-            writer = csv.writer(f)
-            writer.writerow(new_row)
-        ui.notify('Vehicle added! Please reload the app to see the new vehicle.')
-
-    ui.button('Add Vehicle', on_click=add_vehicle).classes('mt-4')
 
 @ui.page('/vin-lookup')
 def vin_lookup_page():
@@ -183,5 +150,9 @@ def vin_lookup_rapidapi_page():
 
     ui.button("Lookup", on_click=lookup).classes("mt-2")
 
-ui.run(title="Car Information Viewer", storage_secret="P4ssword!")
+ui.run(
+    title="VehicleMax",
+    port=8080,
+    reload=True
+)
 
