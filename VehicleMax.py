@@ -32,7 +32,6 @@ def render_header():
         ui.label("VehicleMax").classes("text-3xl font-bold")
         with ui.row().classes('ml-8'):
             ui.button("Home", on_click=lambda: ui.navigate.to('/')).props('flat color=white')
-            ui.button("Admin", on_click=lambda: ui.navigate.to('/admin')).props('flat color=white')
             ui.button("VIN Lookup", on_click=lambda: ui.navigate.to('/vin-lookup')).props('flat color=white')
             ui.button("Car API Search", on_click=lambda: ui.navigate.to('/car-api-search')).props('flat color=white')
             ui.button("VIN Lookup 2", on_click=lambda: ui.navigate.to('/vin-lookup-rapidapi')).props('flat color=white')
@@ -155,4 +154,7 @@ ui.run(
     port=8080,
     reload=True
 )
+
+
+
 
