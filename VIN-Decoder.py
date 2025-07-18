@@ -171,9 +171,12 @@ def car_api_search_page():
     car_history_container = ui.element("div")
 
 
-ui.run(
-    title="VIN Decoder",
-    port=8081,
-    reload=True
-)  # Run the NiceGUI app on port 8081 with auto-reload enabled
+#ui.run(
+    #title="VIN Decoder", 
+    # port=8081,
+    #reload=True
+#)  # Run the NiceGUI app on port 8081 with auto-reload enabled
 
+import os
+ui.run(port=int(os.environ.get("PORT", 8080)))
+# Run the NiceGUI app on the port specified in the environment variable PORT, defaulting to 8080
