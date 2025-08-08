@@ -15,10 +15,6 @@ API_KEY = os.getenv("API_KEY")  # Retrieves the API key from environment variabl
 # Set up logging
 logging.basicConfig(filename='error.log', level=logging.ERROR)  # Logs errors to error.log file
 
-
-
-
-
 def render_header():
     # Creates a header section for the web page
     with ui.header().classes('bg-blue-900 text-white p-4'):
@@ -26,10 +22,6 @@ def render_header():
         with ui.row().classes('ml-8'):
             ui.button("VIN Lookup", on_click=lambda: ui.navigate.to('/')).props('flat color=white')  # Home button
             ui.button("Search Vehicles", on_click=lambda: ui.navigate.to('/car-api-search')).props('flat color=white')  # Search page button
-
-
-
-
 
 
 @ui.page('/')
@@ -67,6 +59,7 @@ def vin_decoder_page():
                             rows=[{"key": k, "value": v} for k, v in data.items()],
                             row_key="key"
                         ).classes("w-full")
+
                     # Add VIN to history, keep only last 3
                     vin_search_history.insert(0, vin)
                     if len(vin_search_history) > 3:
@@ -137,6 +130,7 @@ def car_api_search_page():
                             rows=cars,
                             row_key="model"
                         ).classes("w-full")
+
                     # Add search to history, keep only last 3
                     search_record = f"{make_input.value} {model_input.value} {year_input.value}".strip()
                     car_search_history.insert(0, search_record)
@@ -171,12 +165,8 @@ def car_api_search_page():
     car_history_container = ui.element("div")
 
 
-#ui.run(
-    #title="VIN Decoder", 
-    # port=8081,
-    #reload=True
-#)  # Run the NiceGUI app on port 8081 with auto-reload enabled
-
-import os
-ui.run(port=int(os.environ.get("PORT", 8080)))
-# Run the NiceGUI app on the port specified in the environment variable PORT, defaulting to 8080
+ui.run( on_air='ca9J58yf603daFph',
+    title="VIN Decoder",
+    port=8081,
+    reload=True
+)

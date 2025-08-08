@@ -10,3 +10,8 @@ ERROR:root:API error: 404 - {"message":"Endpoint '\/vin' does not exist"}
 ERROR:root:API error: 404 - {"message":"Endpoint '\/vin' does not exist"}
 ERROR:root:API error: 404 - {"message":"Endpoint '\/vin' does not exist"}
 ERROR:root:Exception during VIN lookup: HTTPSConnectionPool(host='api.api-ninjas.com', port=443): Max retries exceeded with url: /v1/vinlookup?vin=JH4KA7561PC008269 (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000020FA3F4D290>: Failed to resolve 'api.api-ninjas.com' ([Errno 11001] getaddrinfo failed)"))
+ERROR:root:Cars API error: 400 - {"error": "Missing API Key."}
+ERROR:root:Cars API error: 400 - {"error": "Missing API Key."}
+ERROR:root:Cars API error: 400 - {"error": "Missing API Key."}
+ERROR:root:Cars API error: 400 - {"error": "Missing API Key."}
+ERROR:root:API error: 400 - {"error": "Missing API Key."}
