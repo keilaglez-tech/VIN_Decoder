@@ -8,6 +8,13 @@ from dotenv import load_dotenv  # Import dotenv to load environment variables fr
 import logging           # Import logging for error logging
 
 
+@ui.page('/')
+def index():
+    ui.markdown('### Share this link:')
+    for url in app.urls:        # app.urls contains both localhost and your on-air URL
+        ui.link(text=url, url=url, target=url)
+
+
 # Load API key from .env
 load_dotenv()            # Loads environment variables from a .env file into the environment
 API_KEY = os.getenv("API_KEY")  # Retrieves the API key from environment variables
@@ -165,7 +172,7 @@ def car_api_search_page():
     car_history_container = ui.element("div")
 
 
-ui.run( on_air='ca9J58yf603daFph',
+ui.run( on_air=True,  # Run the application on the server
     title="VIN Decoder",
     port=8081,
     reload=True
