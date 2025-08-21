@@ -1,4 +1,4 @@
-https://on-air.io/keiglez-tech/device-0/
+https://on-air.io/keiglez-tech/VIN-Decoder/
 
 This web app is a vehicle information lookup tool built with NiceGUI. It provides two main features:
 
