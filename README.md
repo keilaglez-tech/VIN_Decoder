@@ -1,4 +1,4 @@
-This web app is a vehicle information lookup tool built with NiceGUI. It provides two main features:
+This web app is a vehicle information lookup tool. It provides two main features:
 
 VIN Lookup: Users can enter a Vehicle Identification Number (VIN) to retrieve detailed information about a specific vehicle using the API Ninjas VIN lookup service. Results are displayed in a table, and the last three VIN searches are shown for quick reference.
 
