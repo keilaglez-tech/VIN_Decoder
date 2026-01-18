@@ -1,6 +1,7 @@
 # This code is a complete NiceGUI application that allows users to look up vehicle information by VIN.
 # It includes error handling and displays results in a table format.
 
+from operator import gt
 from nicegui import ui  # Import NiceGUI for building the web interface
 import requests          # Import requests for making HTTP requests to the API
 import os                # Import os for environment variable access
@@ -24,7 +25,7 @@ logging.basicConfig(filename='error.log', level=logging.ERROR)  # Logs errors to
 
 def render_header():
     # Creates a header section for the web page
-    with ui.header().classes('bg-blue-900 text-white p-4'):
+    with ui.header().classes('background-color: #4682B4; text-white p-4'):
         ui.label("VIN Decoder").classes("text-3xl font-bold")  # Title label
         with ui.row().classes('ml-8'):
             ui.button("VIN Lookup", on_click=lambda: ui.navigate.to('/')).props('flat color=white')  # Home button
@@ -35,68 +36,70 @@ def render_header():
 def vin_decoder_page():
     # Main page for VIN lookup
     render_header()
-    ui.label("Enter a VIN number to lookup").classes("text-2xl font-bold mt-2")
-    vin_input = ui.input("Enter VIN").classes("mb-4")
-    result_label = ui.label("").classes("mt-2")
-    table_container = ui.element("div")
-    # Store last 3 VIN searches
-    vin_search_history = []
+    with ui.column().classes('fit items-center justify-center').style('min-height: 50vh;'):
+        with ui.card().classes('q-pa-md').style('width: 500px; max-width: 95vw; background-color: #4682B4; color: white;'):
 
-    def lookup():
-        vin = vin_input.value.strip()
-        table_container.clear()
-        if not vin or len(vin) != 17 or not vin.isalnum():
-            result_label.text = "Please enter a valid 17-character VIN."
-            return
-        try:
-            response = requests.get(
-                "https://api.api-ninjas.com/v1/vinlookup",
-                params={"vin": vin},
-                headers={"X-Api-Key": API_KEY}
-            )
-            if response.status_code == 200:
-                data = response.json()
-                if data:
-                    result_label.text = ""
-                    with table_container:
-                        ui.label(f"VIN Details for {vin}").classes("text-xl font-bold mb-2")
-                        ui.table(
-                            columns=[{"name": "key", "label": "Field", "field": "key"},
-                                    {"name": "value", "label": "Value", "field": "value"}],
-                            rows=[{"key": k, "value": v} for k, v in data.items()],
-                            row_key="key"
-                        ).classes("w-full")
+            ui.label("Enter a VIN number to lookup").classes("text-2xl font-bold mt-2")
+            vin_input = ui.input("Enter VIN").classes("mb-4")
+            result_label = ui.label("").classes("mt-2")
+            table_container = ui.element("div")
+            # Store last 3 VIN searches
+            vin_search_history = []
 
-                    # Add VIN to history, keep only last 3
-                    vin_search_history.insert(0, vin)
-                    if len(vin_search_history) > 3:
-                        vin_search_history.pop()
-                    history_container.clear()
-                    with history_container:
-                        ui.label("Last 3 VIN Searches:").classes("text-lg font-bold mt-4")
-                        for v in vin_search_history:
-                            ui.label(v).classes("text-base")
-                else:
-                    result_label.text = "No details found for this VIN."
-            else:
-                result_label.text = "There was a problem with the VIN lookup service. Please try again later."
-                logging.error(f"API error: {response.status_code} - {response.text}")
-        except Exception as e:
-            result_label.text = "An unexpected error occurred. Please try again later."
-            logging.error(f"Exception during VIN lookup: {e}")
+            def lookup():
+                vin = vin_input.value.strip()
+                table_container.clear()
+                if not vin or len(vin) != 17 or not vin.isalnum():
+                    result_label.text = "Please enter a valid 17-character VIN."
+                    return
+                try:
+                    response = requests.get(
+                        "https://api.api-ninjas.com/v1/vinlookup",
+                        params={"vin": vin},
+                        headers={"X-Api-Key": API_KEY}
+                    )
+                    if response.status_code == 200:
+                        data = response.json()
+                        if data:
+                            result_label.text = ""
+                            with table_container:
+                                ui.label(f"VIN Details for {vin}").classes("text-xl font-bold mb-2")
+                                ui.table(
+                                    columns=[{"name": "key", "label": "Field", "field": "key"},
+                                            {"name": "value", "label": "Value", "field": "value"}],
+                                    rows=[{"key": k, "value": v} for k, v in data.items()],
+                                    row_key="key"
+                                ).classes("w-full")
 
-    def clear_vin():
-        vin_input.value = ""
-        result_label.text = ""
-        table_container.clear()
+                            # Add VIN to history, keep only last 3
+                            vin_search_history.insert(0, vin)
+                            if len(vin_search_history) > 3:
+                                vin_search_history.pop()
+                            history_container.clear()
+                            with history_container:
+                                ui.label("Last 3 VIN Searches:").classes("text-lg font-bold mt-4")
+                                for v in vin_search_history:
+                                    ui.label(v).classes("text-base")
+                        else:
+                            result_label.text = "No details found for this VIN."
+                    else:
+                        result_label.text = "There was a problem with the VIN lookup service. Please try again later."
+                        logging.error(f"API error: {response.status_code} - {response.text}")
+                except Exception as e:
+                    result_label.text = "An unexpected error occurred. Please try again later."
+                    logging.error(f"Exception during VIN lookup: {e}")
 
-    with ui.row():
-        ui.button("Lookup", on_click=lookup).classes("mt-2")
-        ui.button("Clear", on_click=clear_vin).classes("mt-2")
+            def clear_vin():
+                vin_input.value = ""
+                result_label.text = ""
+                table_container.clear()
 
-    # Section for search history
-    history_container = ui.element("div")
+            with ui.row():
+                ui.button("Lookup", on_click=lookup).classes("mt-2")
+                ui.button("Clear", on_click=clear_vin).classes("mt-2")
 
+            # Section for search history
+            history_container = ui.element("div")
 
 @ui.page('/car-api-search')
 def car_api_search_page():
@@ -172,8 +175,10 @@ def car_api_search_page():
     car_history_container = ui.element("div")
 
 
-ui.run( on_air=True,  # Run the application on the server
-    title="VIN Decoder",
-    port=8081,
-    reload=True
-)
+#ui.run( on_air=True,  # Run the application on the server
+ #   title="VIN Decoder",
+   # port=8081,
+ #   reload=True
+#)
+
+ui.run(host='127.0.0.1', port=8081, reload=False)
