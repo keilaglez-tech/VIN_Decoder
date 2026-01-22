@@ -36,8 +36,8 @@ def render_header():
 def vin_decoder_page():
     # Main page for VIN lookup
     render_header()
-    with ui.column().classes('fit items-center justify-center').style('min-height: 50vh;'):
-        with ui.card().classes('q-pa-md').style('width: 500px; max-width: 95vw; background-color: #4682B4; color: white;'):
+    with ui.column().classes('fit items-center justify-center').style('height: 70vh;'):
+        with ui.card().classes('q-pa-md').style('width: 600px; max-width: 95vw; background-color: #4682B4; color: white;'):
 
             ui.label("Enter a VIN number to lookup").classes("text-2xl font-bold mt-2")
             vin_input = ui.input("Enter VIN").classes("mb-4")
@@ -62,6 +62,7 @@ def vin_decoder_page():
                         data = response.json()
                         if data:
                             result_label.text = ""
+
                             with table_container:
                                 ui.label(f"VIN Details for {vin}").classes("text-xl font-bold mb-2")
                                 ui.table(
@@ -104,75 +105,84 @@ def vin_decoder_page():
 @ui.page('/car-api-search')
 def car_api_search_page():
     render_header()
-    ui.label("Search Vehicles").classes("text-2xl font-bold mt-4")
+    with ui.column().classes('fit items-center justify-center').style('height: 70vh;'):
+        with ui.card().classes('q-pa-md').style('width: 600px; max-width: 95vw; background-color: #4682B4; color: white;'):
+            ui.label("Search Vehicles").classes("text-2xl font-bold mt-4")
 
-    make_input = ui.input("Make (e.g. toyota)").classes("mb-2")
-    model_input = ui.input("Model (e.g. camry)").classes("mb-2")
-    year_input = ui.input("Year (e.g. 2018)").classes("mb-2")
+            make_input = ui.input("Make (e.g. toyota)").classes("mb-2")
+            model_input = ui.input("Model (e.g. camry)").classes("mb-2")
+            year_input = ui.input("Year (e.g. 2018)").classes("mb-2")
 
-    result_label = ui.label("").classes("mt-2")
-    table_container = ui.element("div")
-    # Store last 3 car searches
-    car_search_history = []
+            result_label = ui.label("").classes("mt-2")
+            table_container = ui.element("div")
+            # Store last 3 car searches
+            car_search_history = []
 
-    def search():
-        table_container.clear()
-        params = {}
-        if make_input.value: params["make"] = make_input.value.strip()
-        if model_input.value: params["model"] = model_input.value.strip()
-        if year_input.value: params["year"] = year_input.value.strip()
+            def search():
+                table_container.clear()
+                params = {}
+                if make_input.value: params["make"] = make_input.value.strip()
+                if model_input.value: params["model"] = model_input.value.strip()
+                if year_input.value: params["year"] = year_input.value.strip()
 
-        try:
-            response = requests.get(
-                "https://api.api-ninjas.com/v1/cars",
-                params=params,
-                headers={"X-Api-Key": API_KEY}
-            )
-            if response.status_code == 200:
-                cars = response.json()
-                if cars:
-                    result_label.text = ""
-                    with table_container:
-                        ui.label("Search Results").classes("text-xl font-bold mb-2")
-                        columns = [{"name": k, "label": k.replace("_", " ").title(), "field": k} for k in cars[0].keys()]
-                        ui.table(
-                            columns=columns,
-                            rows=cars,
-                            row_key="model"
-                        ).classes("w-full")
+                try:
+                    response = requests.get(
+                        "https://api.api-ninjas.com/v1/cars",
+                        params=params,
+                        headers={"X-Api-Key": API_KEY}
+                    )
+                    if response.status_code == 200:
+                        cars = response.json()
+                        if cars:
+                            result_label.text = ""
 
-                    # Add search to history, keep only last 3
-                    search_record = f"{make_input.value} {model_input.value} {year_input.value}".strip()
-                    car_search_history.insert(0, search_record)
-                    if len(car_search_history) > 3:
-                        car_search_history.pop()
-                    car_history_container.clear()
-                    with car_history_container:
-                        ui.label("Last 3 Vehicle Searches:").classes("text-lg font-bold mt-4")
-                        for s in car_search_history:
-                            ui.label(s).classes("text-base")
-                else:
-                    result_label.text = "No cars found for the given parameters."
-            else:
-                result_label.text = "There was a problem with the Cars API service. Please try again later."
-                logging.error(f"Cars API error: {response.status_code} - {response.text}")
-        except Exception as e:
-            result_label.text = "An unexpected error occurred. Please try again later."
-            logging.error(f"Exception during Cars API search: {e}")
+                            with table_container:
+                                ui.label("Search Results").classes("text-xl font-bold mb-2")
+                                for car in cars:
+                                    ui.label(f"{car.get('make', '').title()} {car.get('model', '').title()}").classes(
+                                        "text-lg font-bold mt-4"
+                                    )
+                                    ui.table(
+                                        columns=[
+                                            {"name": "key", "label": "Field", "field": "key"},
+                                            {"name": "value", "label": "Value", "field": "value"},
+                                        ],
+                                        rows=[{"key": k.replace("_", " ").title(), "value": v} for k, v in car.items()],
+                                        row_key="key",
+                                    ).classes("w-full mb-4")
 
-    def clear_search():
-        make_input.value = ""
-        model_input.value = ""
-        year_input.value = ""
-        result_label.text = ""
-        table_container.clear()
+                            # Add search to history, keep only last 3
+                            search_record = f"{make_input.value} {model_input.value} {year_input.value}".strip()
+                            car_search_history.insert(0, search_record)
+                            if len(car_search_history) > 3:
+                                car_search_history.pop()
+                            car_history_container.clear()
+                            with car_history_container:
+                                ui.label("Last 3 Vehicle Searches:").classes("text-lg font-bold mt-4")
+                                for s in car_search_history:
+                                    ui.label(s).classes("text-base")
+                        else:
+                            result_label.text = "No cars found for the given parameters."
+                    else:
+                        result_label.text = "There was a problem with the Cars API service. Please try again later."
+                        logging.error(f"Cars API error: {response.status_code} - {response.text}")
+                except Exception as e:
+                    result_label.text = "An unexpected error occurred. Please try again later."
+                    logging.error(f"Exception during Cars API search: {e}")
 
-    with ui.row():
-        ui.button("Search", on_click=search).classes("mt-2")
-        ui.button("Clear", on_click=clear_search).classes("mt-2")
+            def clear_search():
+                make_input.value = ""
+                model_input.value = ""
+                year_input.value = ""
+                result_label.text = ""
+                table_container.clear()
 
-    # Section for search history
-    car_history_container = ui.element("div")
+            with ui.row():
+                ui.button("Search", on_click=search).classes("mt-2")
+                ui.button("Clear", on_click=clear_search).classes("mt-2")
+
+            # Section for search history
+            car_history_container = ui.element("div")
 
 
 #ui.run( on_air=True,  # Run the application on the server
@@ -181,4 +191,4 @@ def car_api_search_page():
  #   reload=True
 #)
 
-ui.run(host='127.0.0.1', port=8081, reload=False)
+ui.run(host='127.0.0.1', port=8081, reload=True)
