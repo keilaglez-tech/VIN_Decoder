@@ -558,3 +558,510 @@ Traceback (most recent call last):
     key, value = word.split(':', 1)
     ^^^^^^^^^^
 ValueError: not enough values to unpack (expected 2, got 1)
+ERROR:nicegui:module 'nicegui.ui' has no attribute 'navigate'
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\events.py", line 306, in handle_event
+    result = handler(arguments) if expects_arguments else handler()
+                                                          ^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 32, in <lambda>
+    ui.button("Search Vehicles", on_click=lambda: ui.navigate.to('/car-api-search')).props('flat color=white')  # Search page button
+                                                  ^^^^^^^^^^^
+AttributeError: module 'nicegui.ui' has no attribute 'navigate'
+ERROR:nicegui:module 'nicegui.ui' has no attribute 'navigate'
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\events.py", line 306, in handle_event
+    result = handler(arguments) if expects_arguments else handler()
+                                                          ^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 32, in <lambda>
+    ui.button("Search Vehicles", on_click=lambda: ui.navigate.to('/car-api-search')).props('flat color=white')  # Search page button
+                                                  ^^^^^^^^^^^
+AttributeError: module 'nicegui.ui' has no attribute 'navigate'
+ERROR:nicegui:module 'nicegui.ui' has no attribute 'navigate'
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\events.py", line 306, in handle_event
+    result = handler(arguments) if expects_arguments else handler()
+                                                          ^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 32, in <lambda>
+    ui.button("Search Vehicles", on_click=lambda: ui.navigate.to('/car-api-search')).props('flat color=white')  # Search page button
+                                                  ^^^^^^^^^^^
+AttributeError: module 'nicegui.ui' has no attribute 'navigate'
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-20' coro=<AsyncServer._handle_event_internal() done, defined at C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\socketio\async_server.py:614> exception=TypeError("_on_handshake() missing 1 required positional argument: 'data'")>
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\socketio\async_server.py", line 616, in _handle_event_internal
+    r = await server._trigger_event(data[0], namespace, sid, *data[1:])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\socketio\async_server.py", line 644, in _trigger_event
+    ret = await handler(*args)
+                ^^^^^^^^^^^^^^
+TypeError: _on_handshake() missing 1 required positional argument: 'data'
+ERROR:asyncio:Task exception was never retrieved
+future: <Task finished name='Task-82' coro=<AsyncServer._handle_event_internal() done, defined at C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\socketio\async_server.py:614> exception=TypeError("_on_handshake() missing 1 required positional argument: 'data'")>
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\socketio\async_server.py", line 616, in _handle_event_internal
+    r = await server._trigger_event(data[0], namespace, sid, *data[1:])
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\socketio\async_server.py", line 644, in _trigger_event
+    ret = await handler(*args)
+                ^^^^^^^^^^^^^^
+TypeError: _on_handshake() missing 1 required positional argument: 'data'
+ERROR:nicegui:not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 151, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 98, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 91, in receive_nowait
+    raise EndOfStream
+anyio.EndOfStream
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 23, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 13, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 162, in decorated
+    return create_500_error_page(e, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 129, in create_500_error_page
+    raise e
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 160, in decorated
+    result = func(*dec_args, **dec_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 38, in vin_decoder_page
+    render_header()
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 29, in render_header
+    ui.label("VIN Decoder").classes("text-3xl font-bold").style("color=NavyBlue")  # Title label
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 61, in __call__
+    style_dict.update(self.parse(add))
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 75, in parse
+    key, value = word.split(':', 1)
+    ^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+ERROR:nicegui:not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 151, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 98, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 91, in receive_nowait
+    raise EndOfStream
+anyio.EndOfStream
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 23, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 13, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 162, in decorated
+    return create_500_error_page(e, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 129, in create_500_error_page
+    raise e
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 160, in decorated
+    result = func(*dec_args, **dec_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 38, in vin_decoder_page
+    render_header()
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 29, in render_header
+    ui.label("VIN Decoder").classes("text-3xl font-bold").style("color=Blue")  # Title label
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 61, in __call__
+    style_dict.update(self.parse(add))
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 75, in parse
+    key, value = word.split(':', 1)
+    ^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+ERROR:nicegui:not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 151, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 98, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 91, in receive_nowait
+    raise EndOfStream
+anyio.EndOfStream
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 23, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 13, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 162, in decorated
+    return create_500_error_page(e, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 129, in create_500_error_page
+    raise e
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 160, in decorated
+    result = func(*dec_args, **dec_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 38, in vin_decoder_page
+    render_header()
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 29, in render_header
+    ui.label("VIN Decoder").classes("text-3xl font-bold").style("color=Blue")  # Title label
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 61, in __call__
+    style_dict.update(self.parse(add))
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 75, in parse
+    key, value = word.split(':', 1)
+    ^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+ERROR:nicegui:not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 151, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 98, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 91, in receive_nowait
+    raise EndOfStream
+anyio.EndOfStream
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 23, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 13, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 162, in decorated
+    return create_500_error_page(e, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 129, in create_500_error_page
+    raise e
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 160, in decorated
+    result = func(*dec_args, **dec_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 38, in vin_decoder_page
+    render_header()
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 29, in render_header
+    ui.label("VIN Decoder").classes("text-3xl font-bold").style("color=Blue")  # Title label
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 61, in __call__
+    style_dict.update(self.parse(add))
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 75, in parse
+    key, value = word.split(':', 1)
+    ^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+ERROR:nicegui:not enough values to unpack (expected 2, got 1)
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 151, in call_next
+    message = await recv_stream.receive()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 98, in receive
+    return self.receive_nowait()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\anyio\streams\memory.py", line 91, in receive_nowait
+    raise EndOfStream
+anyio.EndOfStream
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 23, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\middlewares.py", line 13, in dispatch
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 29, in __call__
+    await responder(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 130, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\gzip.py", line 46, in __call__
+    await self.app(scope, receive, self.send_with_compression)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 115, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 101, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 355, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\fastapi\routing.py", line 243, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 162, in decorated
+    return create_500_error_page(e, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 129, in create_500_error_page
+    raise e
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\page.py", line 160, in decorated
+    result = func(*dec_args, **dec_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 38, in vin_decoder_page
+    render_header()
+  File "c:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\VIN-Decoder.py", line 29, in render_header
+    ui.label("VIN Decoder").classes("text-3xl font-bold").style("color=Navy")  # Title label
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 61, in __call__
+    style_dict.update(self.parse(add))
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\Keila\Downloads\Personal_PYTHON_PROJECTS\VinDecoderUpdate\VIN_Decoder\.venv\Lib\site-packages\nicegui\style.py", line 75, in parse
+    key, value = word.split(':', 1)
+    ^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
